@@ -139,8 +139,8 @@ function init(){
     model=gltf.scene;let triangles=0,meshes=0;
     model.traverse(object=>{if(object.isMesh){meshes++;triangles+=(object.geometry.index?.count||object.geometry.attributes.position.count)/3;object.castShadow=true;object.receiveShadow=true;const materials=Array.isArray(object.material)?object.material:[object.material];materials.forEach(mat=>{if(mat.map)mat.map.anisotropy=Math.min(8,renderer.capabilities.getMaxAnisotropy());});}});
     scene.add(model);modelBounds=new THREE.Box3().setFromObject(model);setRoof(roofHidden);hasLoaded=true;if(!userMoved){const pose=viewPose(activeView);camera.position.copy(pose.pos);controls.target.copy(pose.target);controls.update();}$('#load-progress').style.width='100%';loader.classList.add('hidden');
-    window.__ubowl={loaded:true,meshes,triangles:Math.round(triangles),bounds:new THREE.Box3().setFromObject(model).getSize(new THREE.Vector3()).toArray(),version:'1.3.0'};
-    $('#model-meta').textContent='实拍还原 / V1.3';
+    window.__ubowl={loaded:true,meshes,triangles:Math.round(triangles),bounds:new THREE.Box3().setFromObject(model).getSize(new THREE.Vector3()).toArray(),version:'1.4.0'};
+    $('#model-meta').textContent='实拍还原 / V1.4';
   },progress=>{if(progress.total){const percent=Math.round(progress.loaded/progress.total*100);$('#load-progress').style.width=percent+'%';$('#load-label').textContent='正在打开店铺空间 · '+percent+'%';}},error=>{console.error('Model loading failed',error);showError('空间暂时未能加载，请重试或先查看实拍资料。');});
   function frame(time){requestAnimationFrame(frame);if(!isVisible||failed)return;const delta=Math.min((time-lastTime)/1000,.1);lastTime=time;
     if(transition){const t=Math.min((time-transition.start)/transition.duration,1),ease=t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2;camera.position.lerpVectors(transition.fromPosition,transition.position,ease);controls.target.lerpVectors(transition.fromTarget,transition.target,ease);if(t===1)transition=null;}

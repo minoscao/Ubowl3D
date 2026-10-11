@@ -1,6 +1,6 @@
 {
   "asset": "AR_UBowl_ObservedStore",
-  "version": "1.3",
+  "version": "1.4",
   "units": "meters",
   "authoringAxes": "Z up, -Y forward",
   "exportAxes": "Y up, +Z forward",
@@ -18,7 +18,7 @@
   "sourceVertices": 77848,
   "meshObjects": 23,
   "materials": 44,
-  "glbBytes": 8353576,
+  "glbBytes": 8359308,
   "files": [
     "UBowl_store.glb",
     "UBowl_master.blend"
@@ -49,8 +49,8 @@
     "LED ticker and tiny POS UI lettering are reconstructed from observed wording.",
     "No customers, staff, seating or unobserved dining areas modelled.",
     "Luminous canopy upper backing panel is an inferred hidden construction closure; underside shape follows photographed vault.",
-    "Red entrance-side mass width 1.0 m, front Y=1.20 m and rear Y=2.99 m are estimated from additional QT frames; adjacent fixture coordinates were preserved.",
-    "Current user target is approximately 1.0 m clear passage, explicitly an estimate. Actual geometry clearance is recorded from evaluated world-space mesh bounds, including protruding shelf lips and glass."
+    "Current user target is approximately 1.0 m clear passage, explicitly an estimate. Actual geometry clearance is recorded from evaluated world-space mesh bounds, including protruding shelf lips and glass.",
+    "Current red mass front end spans x=2.05..3.35 m, y=1.20..1.44 m; 1.30 m width and 0.24 m end depth remain inferred. Its full face covers the left refrigerator end, following explicit user correction."
   ],
   "observedFeatures": [
     "Brown glazed square tile counter, backing wall and left brand pillar",
@@ -266,7 +266,9 @@
         "entry-matched.png",
         "entry-entrance.png",
         "entry-top-annotated.png",
-        "entry-comparison.jpg"
+        "entry-comparison.jpg",
+        "end-return-entrance.png",
+        "end-return-front.png"
       ],
       "checked": [
         "All eight photos and 32 original video keyframes reviewed",
@@ -285,7 +287,7 @@
       "leftCase": {
         "min": [
           2.7699999809265137,
-          1.2400000095367432,
+          1.4600000381469727,
           0.007500000298023224
         ],
         "max": [
@@ -321,22 +323,40 @@
       "redMass": {
         "min": [
           2.049999952316284,
-          1.1999999284744263,
+          1.2000000476837158,
           0.0
         ],
         "max": [
-          3.049999952316284,
+          3.3499999046325684,
           2.990000009536743,
           3.3600001335144043
         ]
       },
       "ingredientClearWidth_m": 1.0139999389648438,
-      "entranceClearWidth_m": 1.304999589920044,
+      "entranceClearWidth_m": 1.0049996376037598,
       "leftCaseFrontDirection": "+X into aisle",
       "rightCaseFrontDirection": "-X into aisle",
       "nicheFrontDirection": "-X into aisle",
-      "continuousStraightCorridor_m": 1.0119996070861816,
+      "continuousStraightCorridor_m": 1.0049996376037598,
       "entranceMeasurementNote": "Conservative X projection between red mass and niche; these masses do not fully overlap in Y. The continuous straight corridor is the stricter projection intersection over both entrance and ingredient segments.",
+      "leftCaseEndReturn": {
+        "wallBounds": {
+          "min": [
+            2.0500001907348633,
+            1.2000000476837158,
+            0.0
+          ],
+          "max": [
+            3.3499999046325684,
+            1.440000057220459,
+            3.359999895095825
+          ]
+        },
+        "shelfToWallOuterEdgeMargin_m": 0.006999969482421875,
+        "wallToCaseLongitudinalGap_m": 0.019999980926513672,
+        "frontElevationCoversCaseEnd": true,
+        "wallDepth_m": 0.24000000953674316
+      },
       "annotationPixelLines": [
         {
           "points": [
@@ -354,7 +374,7 @@
         {
           "points": [
             [
-              328.5713791847229,
+              414.28565979003906,
               728.5714387893677
             ],
             [
@@ -362,15 +382,15 @@
               728.5714387893677
             ]
           ],
-          "text": "1.305 m"
+          "text": "1.005 m"
         }
       ]
     }
   },
   "exportVerticesBeforeUVSplits": 64886,
   "drawCallsWithoutShadows": 153,
-  "glbSHA256": "079bc9322f382d8ec32ae4a0fc081f0e8bf96370f2d91c996ce634d06855f23b",
-  "exportRuntimeVertices": 204968,
+  "glbSHA256": "02ec242abc3c70f2b70b6d432015fec724de42daf5a8706293c8172dbf64ee23",
+  "exportRuntimeVertices": 205147,
   "boundsNote": "Envelope includes review forecourt, plinth and removable flowers; shop-only dimensions are separate inferred values.",
   "authoringDependencies": {
     "Blender": "5.2.1",
@@ -461,11 +481,48 @@
         "Service counter and broad red face position retained."
       ],
       "clearance_m": {
-        "ingredient": 1.0139999389648438,
-        "entryProjectedConservative": 1.304999589920044,
-        "continuousStraightCorridor": 1.0119996070861816
+        "ingredient": 1.014,
+        "entryProjectedConservative": 1.305,
+        "continuousStraightCorridor": 1.012
       },
       "status": "Geometry and mesh clearances reviewed; absolute dimensions and cameras remain estimates."
+    },
+    {
+      "version": "1.4",
+      "reason": "User clarified that the red wall completely conceals the left refrigerator end from the storefront. Previous red face stopped at x=3.05 while shelf lips reached x=3.343.",
+      "changes": [
+        "Solid full-height wall end now spans x=2.05..3.35 and y=1.20..1.44, joining the existing deep red mass.",
+        "Left refrigerator shortened from 1.22 m to 1.00 m; front end moved to y=1.46 while its rear end remains y=2.46.",
+        "Right refrigerator and bowl/tong niche have not moved."
+      ],
+      "clearance_m": {
+        "ingredient": 1.0139999389648438,
+        "entryProjectedConservative": 1.0049996376037598,
+        "continuousStraightCorridor": 1.0049996376037598
+      },
+      "endReturnValidation": {
+        "wallBounds": {
+          "min": [
+            2.0500001907348633,
+            1.2000000476837158,
+            0.0
+          ],
+          "max": [
+            3.3499999046325684,
+            1.440000057220459,
+            3.359999895095825
+          ]
+        },
+        "shelfToWallOuterEdgeMargin_m": 0.006999969482421875,
+        "wallToCaseLongitudinalGap_m": 0.019999980926513672,
+        "frontElevationCoversCaseEnd": true,
+        "wallDepth_m": 0.24000000953674316
+      },
+      "review": [
+        "review/end-return-entrance.png",
+        "review/end-return-front.png"
+      ],
+      "qualification": "Front-view geometry coverage and mesh bounds verified; this remains a photo-based reconstruction with inferred dimensions."
     }
   ],
   "cameraMatch": {
