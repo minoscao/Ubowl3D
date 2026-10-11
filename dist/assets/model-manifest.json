@@ -1,6 +1,6 @@
 {
   "asset": "AR_UBowl_ObservedStore",
-  "version": "1.4",
+  "version": "1.5",
   "units": "meters",
   "authoringAxes": "Z up, -Y forward",
   "exportAxes": "Y up, +Z forward",
@@ -14,11 +14,11 @@
     "depth": 3.8,
     "height": 3.35
   },
-  "meshTriangles": 113980,
+  "meshTriangles": 116460,
   "sourceVertices": 77848,
   "meshObjects": 23,
   "materials": 44,
-  "glbBytes": 8359308,
+  "glbBytes": 8446028,
   "files": [
     "UBowl_store.glb",
     "UBowl_master.blend"
@@ -137,7 +137,7 @@
     "roundtrip": {
       "status": "pass",
       "importedMeshes": 23,
-      "triangles": 113980,
+      "triangles": 116460,
       "materials": 41,
       "embeddedImages": 9,
       "missingImages": [],
@@ -246,11 +246,34 @@
       "report": "review/topology-validation.json",
       "failures": [],
       "warnings": [
+        "floor_Assembly: numeric suffix in object or mesh name",
+        "inferred_Shell: numeric suffix in object or mesh name",
+        "entry_Assembly: numeric suffix in object or mesh name",
         "entry_Assembly: 2 edges shared by more than two faces",
+        "counter_Assembly: numeric suffix in object or mesh name",
+        "brand_Pier: numeric suffix in object or mesh name",
         "brand_Pier: 3 edges shared by more than two faces",
+        "service_Backwall: numeric suffix in object or mesh name",
         "service_Backwall: 1 edges shared by more than two faces",
+        "service_Door: numeric suffix in object or mesh name",
+        "service_Window: numeric suffix in object or mesh name",
+        "service_Displays: numeric suffix in object or mesh name",
+        "canopy_Assembly: numeric suffix in object or mesh name",
+        "bowl_Station: numeric suffix in object or mesh name",
+        "ingredient_back_Assembly: numeric suffix in object or mesh name",
+        "ingredient_left_Assembly: numeric suffix in object or mesh name",
+        "ingredient_right_Assembly: numeric suffix in object or mesh name",
+        "condiment_Station: numeric suffix in object or mesh name",
+        "checkout_left_Assembly: numeric suffix in object or mesh name",
         "checkout_left_Assembly: 9 edges shared by more than two faces",
+        "checkout_right_Assembly: numeric suffix in object or mesh name",
         "checkout_right_Assembly: 9 edges shared by more than two faces",
+        "staff_POS: numeric suffix in object or mesh name",
+        "service_Props: numeric suffix in object or mesh name",
+        "drinks_Station: numeric suffix in object or mesh name",
+        "counter_Signs: numeric suffix in object or mesh name",
+        "service_Notices: numeric suffix in object or mesh name",
+        "opening_Flowers: numeric suffix in object or mesh name",
         "opening_Flowers: 15 edges shared by more than two faces"
       ],
       "warningExplanation": "Shared edges occur between touching static subparts/glyph shells in combined meshes. No deformation, collision or printing claim. GLB primitives are triangulated; master source parts remain independently editable."
@@ -268,14 +291,20 @@
         "entry-top-annotated.png",
         "entry-comparison.jpg",
         "end-return-entrance.png",
-        "end-return-front.png"
+        "end-return-front.png",
+        "canopy-v1.5-detail.png",
+        "canopy-v1.5-front.png",
+        "canopy-v1.5-entrance.png"
       ],
       "checked": [
         "All eight photos and 32 original video keyframes reviewed",
         "Counter, canopy, signage, checkout and ingredient fixtures compared to source",
         "Every embedded image decoded into pixel memory after fresh import",
         "Additional QT frames at 2.3, 2.8 and 3.3 seconds reviewed for red partition mass and setback",
-        "Wide red partition face, 2x3 notice layout, backwall tile termination and fridge junction inspected in close render"
+        "Wide red partition face, 2x3 notice layout, backwall tile termination and fridge junction inspected in close render",
+        "Same original-photo crop used to inspect the canopy junction",
+        "Right wall front width and full warmer-side coverage verified from evaluated mesh bounds",
+        "Right wall checked in front elevation and oblique entry views; clear aisle remains at least 1 m"
       ],
       "qualification": "Camera matching is approximate. File import and mesh checks do not establish photographic or survey accuracy. Entry relationships and inward display orientation reviewed separately from technical export checks."
     },
@@ -311,13 +340,13 @@
       "rightNiche": {
         "min": [
           4.354999542236328,
-          0.2850000858306885,
-          0.010000020265579224
+          -0.4350000023841858,
+          0.0
         ],
         "max": [
-          5.044999599456787,
-          0.9800001382827759,
-          2.4099998474121094
+          5.130000114440918,
+          1.1800000667572021,
+          2.700000047683716
         ]
       },
       "redMass": {
@@ -357,6 +386,25 @@
         "frontElevationCoversCaseEnd": true,
         "wallDepth_m": 0.24000000953674316
       },
+      "rightCaseEndReturn": {
+        "wallBounds": {
+          "min": [
+            4.355000019073486,
+            -0.44999998807907104,
+            0.0
+          ],
+          "max": [
+            5.200000286102295,
+            -0.23000000417232513,
+            2.700000047683716
+          ]
+        },
+        "userMinimumWidth_m": 0.6,
+        "actualWidth_m": 0.8450002670288086,
+        "wallDepth_m": 0.2199999839067459,
+        "frontElevationCoversWarmerSide": true,
+        "inFrontOfWarmer": true
+      },
       "annotationPixelLines": [
         {
           "points": [
@@ -387,10 +435,10 @@
       ]
     }
   },
-  "exportVerticesBeforeUVSplits": 64886,
-  "drawCallsWithoutShadows": 153,
-  "glbSHA256": "02ec242abc3c70f2b70b6d432015fec724de42daf5a8706293c8172dbf64ee23",
-  "exportRuntimeVertices": 205147,
+  "exportVerticesBeforeUVSplits": 66164,
+  "drawCallsWithoutShadows": 152,
+  "glbSHA256": "64b6f91245e1d210d8a69912d6ccd97c38f2ffc1afcdc7b57f96cc88abc24f43",
+  "exportRuntimeVertices": 207666,
   "boundsNote": "Envelope includes review forecourt, plinth and removable flowers; shop-only dimensions are separate inferred values.",
   "authoringDependencies": {
     "Blender": "5.2.1",
@@ -410,7 +458,8 @@
     "python build/03_finalize_manifest.py",
     "blender --background --python build/04_entry_review.py",
     "python build/05_review_annotation.py",
-    "python build/03_finalize_manifest.py"
+    "python build/03_finalize_manifest.py",
+    "For v1.5 revision: apply build/canopy_detail_geometry.py to preserved review/UBowl_v1.4_before_canopy.blend, save master, then run 02_export_review.py, validate.py, and 03_finalize_manifest.py."
   ],
   "deliveryNotes": [
     "Photo-based reconstruction, not a measured as-built survey.",
@@ -523,6 +572,38 @@
         "review/end-return-front.png"
       ],
       "qualification": "Front-view geometry coverage and mesh bounds verified; this remains a photo-based reconstruction with inferred dimensions."
+    },
+    {
+      "version": "1.5",
+      "reason": "User corrected the canopy junction and requested the right end wall be at least 0.60 m wide and fully conceal the bowl station side.",
+      "changes": [
+        "Shortened the existing entry arch depth to 0.68 m and gave the hanging end an ivory underside.",
+        "Extended the main luminous canopy rear end by 0.40 m.",
+        "Rebuilt the entry soffit to rise into the rear flat ceiling; the right curve meets the widened wall end.",
+        "Replaced the isolated niche header with a continuous red side wall and brown side-wall tile reveal above.",
+        "Replaced the thin 0.26 m outer pier with a 0.845 m tiled full end return, covering the entire bowl-warmer side from the front."
+      ],
+      "rightEndReturn": {
+        "wallBounds": {
+          "min": [
+            4.355000019073486,
+            -0.44999998807907104,
+            0.0
+          ],
+          "max": [
+            5.200000286102295,
+            -0.23000000417232513,
+            2.700000047683716
+          ]
+        },
+        "userMinimumWidth_m": 0.6,
+        "actualWidth_m": 0.8450002670288086,
+        "wallDepth_m": 0.2199999839067459,
+        "frontElevationCoversWarmerSide": true,
+        "inFrontOfWarmer": true
+      },
+      "clearance_m": 1.0049996376037598,
+      "qualification": "The 0.60 m minimum and approximately 1 m aisle are user estimates; other geometry remains inferred from uncalibrated images. Counter and terminal projection differences remain outside this localized revision."
     }
   ],
   "cameraMatch": {
