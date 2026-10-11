@@ -24,7 +24,7 @@ const views = {
   overview:{position:[7.8,4.8,12],target:[0,1.35,-0.7],title:'整体空间',detail:'棕红砖面、暖色灯棚与店内陈列。',reference:3,index:1},
   front:{position:[-0.1,2.1,13.8],target:[-0.1,1.6,-0.5],title:'门头正面',detail:'品牌招牌、弧形灯棚与连续柜台。',reference:3,index:2},
   counter:{position:[2.4,2.5,4.5],target:[0.3,1.15,0.0],title:'称重收银',detail:'双自助设备、电子秤与黄铜食材碗。',reference:6,index:3},
-  ingredients:{position:[3.61,1.62,-.7],target:[3.65,1.40,-2.8],title:'自选食材',detail:'进入自选区查看冷藏陈列，纵深按视频估算。',reference:7,index:4},
+  ingredients:{position:[3.85,1.65,.6],target:[3.85,1.40,-2.95],title:'自选食材',detail:'两侧冷柜朝向通道，净通行宽度按约 1 米估算。',reference:7,index:4},
   plan:{position:[0,14,0.2],target:[0,0.35,-1.0],title:'俯瞰布局',detail:'顶棚已移开，查看柜台与自选区的关系。',reference:7,index:5},
 };
 let activeView='overview', model, renderer, camera, controls, scene, transition, roofHidden=false, toastTimer;
@@ -65,6 +65,7 @@ function setView(name,animate=true){
   setRoof(name==='plan');setAutoRotate(false);
   if(camera&&controls){
     userMoved=false;
+    camera.fov=name==='ingredients'?64:38;camera.updateProjectionMatrix();
     const {pos,target}=viewPose(name);
     if(animate&&!reducedMotion){transition={start:performance.now(),duration:1100,fromPosition:camera.position.clone(),fromTarget:controls.target.clone(),position:pos,target};}
     else{transition=null;camera.position.copy(pos);controls.target.copy(target);controls.update();}
@@ -105,7 +106,7 @@ viewport.addEventListener('keydown',e=>{
   if(e.key==='ArrowLeft')spherical.theta-=.1;if(e.key==='ArrowRight')spherical.theta+=.1;
   if(e.key==='ArrowUp')spherical.phi-=.08;if(e.key==='ArrowDown')spherical.phi+=.08;
   if(e.key==='+'||e.key==='=')spherical.radius*=.9;if(e.key==='-')spherical.radius*=1.1;
-  spherical.phi=THREE.MathUtils.clamp(spherical.phi,.035,Math.PI/2-.03);spherical.radius=THREE.MathUtils.clamp(spherical.radius,.8,30);
+  spherical.phi=THREE.MathUtils.clamp(spherical.phi,.035,Math.PI/2-.03);spherical.radius=THREE.MathUtils.clamp(spherical.radius,.8,60);
   camera.position.copy(controls.target).add(new THREE.Vector3().setFromSpherical(spherical));controls.update();
 });
 
@@ -120,7 +121,7 @@ function init(){
   viewport.appendChild(renderer.domElement);
   renderer.domElement.addEventListener('webglcontextlost',e=>{e.preventDefault();showError('图形显示已暂停，请重新加载。');});
   controls=new OrbitControls(camera,renderer.domElement);controls.enableDamping=true;controls.dampingFactor=.075;
-  controls.maxPolarAngle=Math.PI/2-.03;controls.minPolarAngle=.035;controls.minDistance=.8;controls.maxDistance=30;
+  controls.maxPolarAngle=Math.PI/2-.03;controls.minPolarAngle=.035;controls.minDistance=.8;controls.maxDistance=60;
   controls.autoRotateSpeed=.65;controls.zoomSpeed=.7;controls.panSpeed=.7;controls.target.set(0,1.25,-.7);
   controls.addEventListener('start',()=>{transition=null;userMoved=true;setAutoRotate(false);});
   const pmrem=new THREE.PMREMGenerator(renderer),environment=new RoomEnvironment();
@@ -138,8 +139,8 @@ function init(){
     model=gltf.scene;let triangles=0,meshes=0;
     model.traverse(object=>{if(object.isMesh){meshes++;triangles+=(object.geometry.index?.count||object.geometry.attributes.position.count)/3;object.castShadow=true;object.receiveShadow=true;const materials=Array.isArray(object.material)?object.material:[object.material];materials.forEach(mat=>{if(mat.map)mat.map.anisotropy=Math.min(8,renderer.capabilities.getMaxAnisotropy());});}});
     scene.add(model);modelBounds=new THREE.Box3().setFromObject(model);setRoof(roofHidden);hasLoaded=true;if(!userMoved){const pose=viewPose(activeView);camera.position.copy(pose.pos);controls.target.copy(pose.target);controls.update();}$('#load-progress').style.width='100%';loader.classList.add('hidden');
-    window.__ubowl={loaded:true,meshes,triangles:Math.round(triangles),bounds:new THREE.Box3().setFromObject(model).getSize(new THREE.Vector3()).toArray(),version:'1.2.0'};
-    $('#model-meta').textContent='实拍还原 / V1.2';
+    window.__ubowl={loaded:true,meshes,triangles:Math.round(triangles),bounds:new THREE.Box3().setFromObject(model).getSize(new THREE.Vector3()).toArray(),version:'1.3.0'};
+    $('#model-meta').textContent='实拍还原 / V1.3';
   },progress=>{if(progress.total){const percent=Math.round(progress.loaded/progress.total*100);$('#load-progress').style.width=percent+'%';$('#load-label').textContent='正在打开店铺空间 · '+percent+'%';}},error=>{console.error('Model loading failed',error);showError('空间暂时未能加载，请重试或先查看实拍资料。');});
   function frame(time){requestAnimationFrame(frame);if(!isVisible||failed)return;const delta=Math.min((time-lastTime)/1000,.1);lastTime=time;
     if(transition){const t=Math.min((time-transition.start)/transition.duration,1),ease=t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2;camera.position.lerpVectors(transition.fromPosition,transition.position,ease);controls.target.lerpVectors(transition.fromTarget,transition.target,ease);if(t===1)transition=null;}

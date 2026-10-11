@@ -1,24 +1,24 @@
 {
   "asset": "AR_UBowl_ObservedStore",
-  "version": "1.2",
+  "version": "1.3",
   "units": "meters",
   "authoringAxes": "Z up, -Y forward",
   "exportAxes": "Y up, +Z forward",
   "boundsApprox_m": {
-    "width": 9.3065,
+    "width": 10.0065,
     "depth": 4.876,
     "height": 3.655
   },
   "shopDimensionsInferred_m": {
-    "width": 9.0,
+    "width": 9.7,
     "depth": 3.8,
     "height": 3.35
   },
-  "meshTriangles": 107171,
-  "sourceVertices": 74004,
+  "meshTriangles": 113980,
+  "sourceVertices": 77848,
   "meshObjects": 23,
   "materials": 44,
-  "glbBytes": 7648956,
+  "glbBytes": 8353576,
   "files": [
     "UBowl_store.glb",
     "UBowl_master.blend"
@@ -49,7 +49,8 @@
     "LED ticker and tiny POS UI lettering are reconstructed from observed wording.",
     "No customers, staff, seating or unobserved dining areas modelled.",
     "Luminous canopy upper backing panel is an inferred hidden construction closure; underside shape follows photographed vault.",
-    "Red entrance-side mass width 1.0 m, front Y=1.20 m and rear Y=2.99 m are estimated from additional QT frames; adjacent fixture coordinates were preserved."
+    "Red entrance-side mass width 1.0 m, front Y=1.20 m and rear Y=2.99 m are estimated from additional QT frames; adjacent fixture coordinates were preserved.",
+    "Current user target is approximately 1.0 m clear passage, explicitly an estimate. Actual geometry clearance is recorded from evaluated world-space mesh bounds, including protruding shelf lips and glass."
   ],
   "observedFeatures": [
     "Brown glazed square tile counter, backing wall and left brand pillar",
@@ -97,14 +98,14 @@
     },
     "ingredients": {
       "position": [
-        3.6,
-        1.7,
-        0.9
+        3.85,
+        1.65,
+        0.6
       ],
       "target": [
-        3.6,
-        1.25,
-        -2.3
+        3.85,
+        1.4,
+        -2.95
       ]
     },
     "counter": {
@@ -118,13 +119,25 @@
         1.15,
         0
       ]
+    },
+    "entrance": {
+      "position": [
+        3.88,
+        2.2,
+        3.6
+      ],
+      "target": [
+        3.7,
+        1.55,
+        -1.3
+      ]
     }
   },
   "validation": {
     "roundtrip": {
       "status": "pass",
       "importedMeshes": 23,
-      "triangles": 107171,
+      "triangles": 113980,
       "materials": 41,
       "embeddedImages": 9,
       "missingImages": [],
@@ -218,7 +231,7 @@
           -0.22999998927116394
         ],
         "max": [
-          4.650000095367432,
+          5.349999904632568,
           3.299999952316284,
           3.4250001907348633
         ]
@@ -238,7 +251,7 @@
         "service_Backwall: 1 edges shared by more than two faces",
         "checkout_left_Assembly: 9 edges shared by more than two faces",
         "checkout_right_Assembly: 9 edges shared by more than two faces",
-        "opening_Flowers: 6 edges shared by more than two faces"
+        "opening_Flowers: 15 edges shared by more than two faces"
       ],
       "warningExplanation": "Shared edges occur between touching static subparts/glyph shells in combined meshes. No deformation, collision or printing claim. GLB primitives are triangulated; master source parts remain independently editable."
     },
@@ -249,7 +262,11 @@
         "cutaway.png",
         "roundtrip.png",
         "partition-corrected.png",
-        "partition-comparison.jpg"
+        "partition-comparison.jpg",
+        "entry-matched.png",
+        "entry-entrance.png",
+        "entry-top-annotated.png",
+        "entry-comparison.jpg"
       ],
       "checked": [
         "All eight photos and 32 original video keyframes reviewed",
@@ -257,13 +274,103 @@
         "Every embedded image decoded into pixel memory after fresh import",
         "Additional QT frames at 2.3, 2.8 and 3.3 seconds reviewed for red partition mass and setback",
         "Wide red partition face, 2x3 notice layout, backwall tile termination and fridge junction inspected in close render"
+      ],
+      "qualification": "Camera matching is approximate. File import and mesh checks do not establish photographic or survey accuracy. Entry relationships and inward display orientation reviewed separately from technical export checks."
+    },
+    "clearance": {
+      "unit": "metres",
+      "basis": "evaluated world-space mesh bounding boxes including trim and shelf lips",
+      "userTarget_m": 1.0,
+      "userTargetStatus": "user estimate, not surveyed",
+      "leftCase": {
+        "min": [
+          2.7699999809265137,
+          1.2400000095367432,
+          0.007500000298023224
+        ],
+        "max": [
+          3.3429999351501465,
+          2.4600000381469727,
+          2.1550002098083496
+        ]
+      },
+      "rightCase": {
+        "min": [
+          4.35699987411499,
+          1.2400000095367432,
+          0.007500000298023224
+        ],
+        "max": [
+          4.930000305175781,
+          2.4600000381469727,
+          2.1550002098083496
+        ]
+      },
+      "rightNiche": {
+        "min": [
+          4.354999542236328,
+          0.2850000858306885,
+          0.010000020265579224
+        ],
+        "max": [
+          5.044999599456787,
+          0.9800001382827759,
+          2.4099998474121094
+        ]
+      },
+      "redMass": {
+        "min": [
+          2.049999952316284,
+          1.1999999284744263,
+          0.0
+        ],
+        "max": [
+          3.049999952316284,
+          2.990000009536743,
+          3.3600001335144043
+        ]
+      },
+      "ingredientClearWidth_m": 1.0139999389648438,
+      "entranceClearWidth_m": 1.304999589920044,
+      "leftCaseFrontDirection": "+X into aisle",
+      "rightCaseFrontDirection": "-X into aisle",
+      "nicheFrontDirection": "-X into aisle",
+      "continuousStraightCorridor_m": 1.0119996070861816,
+      "entranceMeasurementNote": "Conservative X projection between red mass and niche; these masses do not fully overlap in Y. The continuous straight corridor is the stricter projection intersection over both entrance and ingredient segments.",
+      "annotationPixelLines": [
+        {
+          "points": [
+            [
+              412.2856557369232,
+              399.9999761581421
+            ],
+            [
+              701.9999623298645,
+              399.9999761581421
+            ]
+          ],
+          "text": "1.014 m"
+        },
+        {
+          "points": [
+            [
+              328.5713791847229,
+              728.5714387893677
+            ],
+            [
+              701.4284133911133,
+              728.5714387893677
+            ]
+          ],
+          "text": "1.305 m"
+        }
       ]
     }
   },
-  "exportVerticesBeforeUVSplits": 61153,
-  "drawCallsWithoutShadows": 151,
-  "glbSHA256": "84c3e7ae563d6b3a9297cc4c9a425632d786028fc62869675881715a038c346d",
-  "exportRuntimeVertices": 184285,
+  "exportVerticesBeforeUVSplits": 64886,
+  "drawCallsWithoutShadows": 153,
+  "glbSHA256": "079bc9322f382d8ec32ae4a0fc081f0e8bf96370f2d91c996ce634d06855f23b",
+  "exportRuntimeVertices": 204968,
   "boundsNote": "Envelope includes review forecourt, plinth and removable flowers; shop-only dimensions are separate inferred values.",
   "authoringDependencies": {
     "Blender": "5.2.1",
@@ -280,6 +387,9 @@
     "blender --background --python build/01_build_store.py -- --no-render",
     "blender --background --python build/02_export_review.py",
     "Run skill validate.py on EXPORT collection with --budget-tris 150000 --require-uv",
+    "python build/03_finalize_manifest.py",
+    "blender --background --python build/04_entry_review.py",
+    "python build/05_review_annotation.py",
     "python build/03_finalize_manifest.py"
   ],
   "deliveryNotes": [
@@ -333,6 +443,60 @@
         "Other fixture, food and flower placement choices"
       ],
       "uncertainty": "1.0 m width and 1.20 m setback are perspective-based estimates, not surveyed measurements. Close comparison is from a similar but uncalibrated camera."
+    },
+    {
+      "version": "1.3",
+      "reason": "User rejected the narrow entrance bay and estimated about 1 m clear passage. Re-review found reversed side-fridge orientation and a front-facing bowl niche that should face inward from the right wall.",
+      "evidence": [
+        "ref/20261011-161407.jpg",
+        "review/partition-2.8.jpg",
+        "review/partition-3.8.jpg"
+      ],
+      "changes": [
+        "Right facade boundary moved from x=4.50 to x=5.20; inferred whole storefront width is now 9.70 m.",
+        "Right case centre moved to x=4.65; back case widened to 2.10 m.",
+        "Left case faces +X and right case faces -X, both into the aisle.",
+        "Bowl/tong niche rotated onto the right side wall, facing -X, with its placement checked against a continuous straight passage.",
+        "Entrance arch widened with matching cream inner soffit.",
+        "Service counter and broad red face position retained."
+      ],
+      "clearance_m": {
+        "ingredient": 1.0139999389648438,
+        "entryProjectedConservative": 1.304999589920044,
+        "continuousStraightCorridor": 1.0119996070861816
+      },
+      "status": "Geometry and mesh clearances reviewed; absolute dimensions and cameras remain estimates."
     }
-  ]
+  ],
+  "cameraMatch": {
+    "source": "QT frames near 2.8 and 3.8 seconds",
+    "lens_mm": 24,
+    "sensorFit": "VERTICAL",
+    "sensorHeight_mm": 36,
+    "qualification": "Approximate phone field of view and eye-level camera; no measured camera calibration.",
+    "partitionCameraBlender": {
+      "position": [
+        3.4,
+        -0.7,
+        1.65
+      ],
+      "target": [
+        2.85,
+        1.45,
+        1.4
+      ]
+    },
+    "aisleCameraBlender": {
+      "position": [
+        3.85,
+        -0.6,
+        1.65
+      ],
+      "target": [
+        3.85,
+        2.95,
+        1.4
+      ]
+    }
+  }
 }
