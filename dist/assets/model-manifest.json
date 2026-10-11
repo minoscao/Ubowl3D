@@ -1,6 +1,6 @@
 {
   "asset": "AR_UBowl_ObservedStore",
-  "version": "1.1",
+  "version": "1.2",
   "units": "meters",
   "authoringAxes": "Z up, -Y forward",
   "exportAxes": "Y up, +Z forward",
@@ -14,11 +14,11 @@
     "depth": 3.8,
     "height": 3.35
   },
-  "meshTriangles": 107705,
-  "sourceVertices": 74476,
+  "meshTriangles": 107171,
+  "sourceVertices": 74004,
   "meshObjects": 23,
   "materials": 44,
-  "glbBytes": 7680792,
+  "glbBytes": 7648956,
   "files": [
     "UBowl_store.glb",
     "UBowl_master.blend"
@@ -48,7 +48,8 @@
     "Temporary opening bouquets are simplified from supplied photos.",
     "LED ticker and tiny POS UI lettering are reconstructed from observed wording.",
     "No customers, staff, seating or unobserved dining areas modelled.",
-    "Luminous canopy upper backing panel is an inferred hidden construction closure; underside shape follows photographed vault."
+    "Luminous canopy upper backing panel is an inferred hidden construction closure; underside shape follows photographed vault.",
+    "Red entrance-side mass width 1.0 m, front Y=1.20 m and rear Y=2.99 m are estimated from additional QT frames; adjacent fixture coordinates were preserved."
   ],
   "observedFeatures": [
     "Brown glazed square tile counter, backing wall and left brand pillar",
@@ -123,7 +124,7 @@
     "roundtrip": {
       "status": "pass",
       "importedMeshes": 23,
-      "triangles": 107705,
+      "triangles": 107171,
       "materials": 41,
       "embeddedImages": 9,
       "missingImages": [],
@@ -232,34 +233,37 @@
       "report": "review/topology-validation.json",
       "failures": [],
       "warnings": [
+        "entry_Assembly: 2 edges shared by more than two faces",
         "brand_Pier: 3 edges shared by more than two faces",
+        "service_Backwall: 1 edges shared by more than two faces",
         "checkout_left_Assembly: 9 edges shared by more than two faces",
         "checkout_right_Assembly: 9 edges shared by more than two faces",
         "opening_Flowers: 6 edges shared by more than two faces"
       ],
-      "warningExplanation": "Remaining shared edges are between touching static subparts/glyph shells in combined display and floral meshes. No deformation, collision or printing claim. GLB primitives are all triangulated; master source parts remain independently editable."
+      "warningExplanation": "Shared edges occur between touching static subparts/glyph shells in combined meshes. No deformation, collision or printing claim. GLB primitives are triangulated; master source parts remain independently editable."
     },
     "visualReview": {
       "views": [
         "overview.png",
         "front.png",
         "cutaway.png",
-        "roundtrip.png"
+        "roundtrip.png",
+        "partition-corrected.png",
+        "partition-comparison.jpg"
       ],
       "checked": [
-        "All eight photos and 32 video keyframes reviewed",
+        "All eight photos and 32 original video keyframes reviewed",
         "Counter, canopy, signage, checkout and ingredient fixtures compared to source",
-        "Tile and red-paint values darkened to match photographed brown-red palette",
-        "Amber stone changed to finer cloud/vein texture",
-        "Canopy material is double-sided and includes a documented upper backing closure",
-        "Every embedded image decoded into pixel memory after fresh import"
+        "Every embedded image decoded into pixel memory after fresh import",
+        "Additional QT frames at 2.3, 2.8 and 3.3 seconds reviewed for red partition mass and setback",
+        "Wide red partition face, 2x3 notice layout, backwall tile termination and fridge junction inspected in close render"
       ]
     }
   },
-  "exportVerticesBeforeUVSplits": 61631,
+  "exportVerticesBeforeUVSplits": 61153,
   "drawCallsWithoutShadows": 151,
-  "glbSHA256": "16ebd0bcfd01d7a6b88c35b7d468219e2e3b14552fa2e7681e94dbe0a27f2109",
-  "exportRuntimeVertices": 185180,
+  "glbSHA256": "84c3e7ae563d6b3a9297cc4c9a425632d786028fc62869675881715a038c346d",
+  "exportRuntimeVertices": 184285,
   "boundsNote": "Envelope includes review forecourt, plinth and removable flowers; shop-only dimensions are separate inferred values.",
   "authoringDependencies": {
     "Blender": "5.2.1",
@@ -274,7 +278,9 @@
   "buildSteps": [
     "python build/00_prepare_textures.py",
     "blender --background --python build/01_build_store.py -- --no-render",
-    "blender --background --python build/02_export_review.py"
+    "blender --background --python build/02_export_review.py",
+    "Run skill validate.py on EXPORT collection with --budget-tris 150000 --require-uv",
+    "python build/03_finalize_manifest.py"
   ],
   "deliveryNotes": [
     "Photo-based reconstruction, not a measured as-built survey.",
@@ -283,5 +289,50 @@
     "Master includes hidden EXPORT collection and fully editable LOW source geometry/text.",
     "Canopy toggle uses canopy_ prefix.",
     "No rig, animation, physics or collision provided."
+  ],
+  "revisionHistory": [
+    {
+      "version": "1.2",
+      "reason": "User identified incorrect thin, forward-projecting red partition beside the counter.",
+      "evidence": [
+        "review/partition-2.3.jpg",
+        "review/partition-2.8.jpg",
+        "review/partition-3.3.jpg",
+        "review/partition-evidence.jpg"
+      ],
+      "observed": "Broad red front face meets the tiled service backwall; entrance turns to the right of this mass. Six notices occupy two rows of three on the red face.",
+      "previous_m": {
+        "x": [
+          2.77,
+          3.05
+        ],
+        "y": [
+          0.065,
+          2.975
+        ],
+        "width": 0.28
+      },
+      "correctedInferred_m": {
+        "x": [
+          2.05,
+          3.05
+        ],
+        "frontY": 1.2,
+        "rearY": 2.99,
+        "width": 1.0
+      },
+      "changes": [
+        "Red mass moved back to approximately the service wall plane, widened toward the left, and given a recess for the existing left ingredient case.",
+        "Tiled service wall now ends at x=2.05 without overlapping the red face.",
+        "Six notice panels enlarged and positioned on the corrected front face."
+      ],
+      "preserved": [
+        "Counter position and dimensions",
+        "All three ingredient refrigerator placements",
+        "Right edge of the entrance-left red mass at x=3.05",
+        "Other fixture, food and flower placement choices"
+      ],
+      "uncertainty": "1.0 m width and 1.20 m setback are perspective-based estimates, not surveyed measurements. Close comparison is from a similar but uncalibrated camera."
+    }
   ]
 }

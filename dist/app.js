@@ -28,7 +28,7 @@ const views = {
   plan:{position:[0,14,0.2],target:[0,0.35,-1.0],title:'俯瞰布局',detail:'顶棚已移开，查看柜台与自选区的关系。',reference:7,index:5},
 };
 let activeView='overview', model, renderer, camera, controls, scene, transition, roofHidden=false, toastTimer;
-let failed=false, lastTime=0, isVisible=true, hasLoaded=false;
+let failed=false, lastTime=0, isVisible=true, hasLoaded=false, userMoved=false, modelBounds;
 const stage=$('.stage'), viewport=$('#viewport'), loader=$('#loader');
 const assetURL=(file)=>new URL('./assets/'+file,import.meta.url).href;
 const toast=(text)=>{const el=$('#toast');el.textContent=text;el.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>el.classList.remove('show'),2600);};
@@ -41,6 +41,20 @@ function setRoof(hidden) {
   if(activeView==='plan')$('#view-detail').textContent=hidden?'顶棚已移开，查看柜台与自选区的关系。':'顶棚已显示，可再次隐藏以查看内部布局。';
 }
 function setAutoRotate(value){if(controls)controls.autoRotate=value;$('#rotate-toggle').setAttribute('aria-pressed',String(value));$('#rotate-toggle').textContent=value?'停止旋转':'自动旋转';}
+function viewPose(name){
+  const view=views[name],pos=new THREE.Vector3(...view.position),target=new THREE.Vector3(...view.target);
+  if(name==='ingredients')return {pos,target};
+  const bounds=name==='counter'?new THREE.Box3(new THREE.Vector3(-1.1,.55,-.7),new THREE.Vector3(2.2,2.05,.65)):
+    (modelBounds||new THREE.Box3(new THREE.Vector3(-4.66,-.23,-3.30),new THREE.Vector3(4.65,3.43,1.58)));
+  const direction=pos.clone().sub(target).normalize(),right=new THREE.Vector3(direction.z,0,-direction.x).normalize(),up=new THREE.Vector3().crossVectors(direction,right);
+  const vertical=Math.tan(THREE.MathUtils.degToRad(camera.fov/2)),horizontal=vertical*viewport.clientWidth/Math.max(1,viewport.clientHeight);
+  let distance=pos.distanceTo(target);
+  for(const x of [bounds.min.x,bounds.max.x])for(const y of [bounds.min.y,bounds.max.y])for(const z of [bounds.min.z,bounds.max.z]){
+    const corner=new THREE.Vector3(x,y,z).sub(target);
+    distance=Math.max(distance,corner.dot(direction)+Math.max(Math.abs(corner.dot(right))/(horizontal*.88),Math.abs(corner.dot(up))/(vertical*.78)));
+  }
+  return {pos:direction.multiplyScalar(distance).add(target),target};
+}
 function setView(name,animate=true){
   const view=views[name];if(!view)return;
   activeView=name;
@@ -50,8 +64,8 @@ function setView(name,animate=true){
   $('#reference-image').src=assetURL(refs[view.reference].file);$('#reference-image').alt=refs[view.reference].title;
   setRoof(name==='plan');setAutoRotate(false);
   if(camera&&controls){
-    const pos=new THREE.Vector3(...view.position),target=new THREE.Vector3(...view.target);
-    if(innerWidth<761&&name!=='ingredients'){pos.sub(target).multiplyScalar(name==='plan'?2.35:name==='counter'?1.6:2.04).add(target);}
+    userMoved=false;
+    const {pos,target}=viewPose(name);
     if(animate&&!reducedMotion){transition={start:performance.now(),duration:1100,fromPosition:camera.position.clone(),fromTarget:controls.target.clone(),position:pos,target};}
     else{transition=null;camera.position.copy(pos);controls.target.copy(target);controls.update();}
   }
@@ -85,7 +99,7 @@ $('#fullscreen').onclick=async()=>{try{if(document.fullscreenElement)await docum
 document.addEventListener('fullscreenchange',()=>{$('#fullscreen').textContent=document.fullscreenElement?'退出全屏 ↙':'全屏 ↗';});
 viewport.addEventListener('keydown',e=>{
   if(!camera||!controls)return;
-  if(!['ArrowLeft','ArrowRight','ArrowUp','ArrowDown','+','-','=','Home'].includes(e.key))return;e.preventDefault();transition=null;
+  if(!['ArrowLeft','ArrowRight','ArrowUp','ArrowDown','+','-','=','Home'].includes(e.key))return;e.preventDefault();transition=null;userMoved=true;
   if(e.key==='Home'){setView(activeView);return;}
   const offset=camera.position.clone().sub(controls.target),spherical=new THREE.Spherical().setFromVector3(offset);
   if(e.key==='ArrowLeft')spherical.theta-=.1;if(e.key==='ArrowRight')spherical.theta+=.1;
@@ -108,7 +122,7 @@ function init(){
   controls=new OrbitControls(camera,renderer.domElement);controls.enableDamping=true;controls.dampingFactor=.075;
   controls.maxPolarAngle=Math.PI/2-.03;controls.minPolarAngle=.035;controls.minDistance=.8;controls.maxDistance=30;
   controls.autoRotateSpeed=.65;controls.zoomSpeed=.7;controls.panSpeed=.7;controls.target.set(0,1.25,-.7);
-  controls.addEventListener('start',()=>{transition=null;setAutoRotate(false);});
+  controls.addEventListener('start',()=>{transition=null;userMoved=true;setAutoRotate(false);});
   const pmrem=new THREE.PMREMGenerator(renderer),environment=new RoomEnvironment();
   scene.environment=pmrem.fromScene(environment,.04).texture;scene.environmentIntensity=.55;environment.dispose();pmrem.dispose();
   scene.add(new THREE.HemisphereLight('#fff1d9','#9e8c76',1.25));
@@ -116,16 +130,16 @@ function init(){
   const fill=new THREE.DirectionalLight('#fff8ed',.9);fill.position.set(8,4,4);scene.add(fill);
   const ground=new THREE.Mesh(new THREE.PlaneGeometry(200,200),new THREE.ShadowMaterial({color:'#68533e',opacity:.18}));ground.rotation.x=-Math.PI/2;ground.position.y=-.24;ground.receiveShadow=true;scene.add(ground);
   setView(views[location.hash.slice(1)]?location.hash.slice(1):'overview',false);
-  new ResizeObserver(()=>{const w=viewport.clientWidth,h=viewport.clientHeight;if(w&&h){camera.aspect=w/h;camera.updateProjectionMatrix();renderer.setSize(w,h);}}).observe(viewport);
+  new ResizeObserver(()=>{const w=viewport.clientWidth,h=viewport.clientHeight;if(w&&h){camera.aspect=w/h;camera.updateProjectionMatrix();renderer.setSize(w,h);if(!userMoved&&!controls.autoRotate){transition=null;const pose=viewPose(activeView);camera.position.copy(pose.pos);controls.target.copy(pose.target);controls.update();}}}).observe(viewport);
   document.addEventListener('visibilitychange',()=>{isVisible=!document.hidden;});
   const manager=new THREE.LoadingManager();manager.onError=url=>console.warn('Asset failed:',url);
   const gltfLoader=new GLTFLoader(manager);
   gltfLoader.load(assetURL('UBowl_store.glb'),gltf=>{
     model=gltf.scene;let triangles=0,meshes=0;
     model.traverse(object=>{if(object.isMesh){meshes++;triangles+=(object.geometry.index?.count||object.geometry.attributes.position.count)/3;object.castShadow=true;object.receiveShadow=true;const materials=Array.isArray(object.material)?object.material:[object.material];materials.forEach(mat=>{if(mat.map)mat.map.anisotropy=Math.min(8,renderer.capabilities.getMaxAnisotropy());});}});
-    scene.add(model);setRoof(roofHidden);hasLoaded=true;$('#load-progress').style.width='100%';loader.classList.add('hidden');
-    window.__ubowl={loaded:true,meshes,triangles:Math.round(triangles),bounds:new THREE.Box3().setFromObject(model).getSize(new THREE.Vector3()).toArray(),version:'1.0.0'};
-    $('#model-meta').textContent='实拍还原 / V1.0';
+    scene.add(model);modelBounds=new THREE.Box3().setFromObject(model);setRoof(roofHidden);hasLoaded=true;if(!userMoved){const pose=viewPose(activeView);camera.position.copy(pose.pos);controls.target.copy(pose.target);controls.update();}$('#load-progress').style.width='100%';loader.classList.add('hidden');
+    window.__ubowl={loaded:true,meshes,triangles:Math.round(triangles),bounds:new THREE.Box3().setFromObject(model).getSize(new THREE.Vector3()).toArray(),version:'1.2.0'};
+    $('#model-meta').textContent='实拍还原 / V1.2';
   },progress=>{if(progress.total){const percent=Math.round(progress.loaded/progress.total*100);$('#load-progress').style.width=percent+'%';$('#load-label').textContent='正在打开店铺空间 · '+percent+'%';}},error=>{console.error('Model loading failed',error);showError('空间暂时未能加载，请重试或先查看实拍资料。');});
   function frame(time){requestAnimationFrame(frame);if(!isVisible||failed)return;const delta=Math.min((time-lastTime)/1000,.1);lastTime=time;
     if(transition){const t=Math.min((time-transition.start)/transition.duration,1),ease=t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2;camera.position.lerpVectors(transition.fromPosition,transition.position,ease);controls.target.lerpVectors(transition.fromTarget,transition.target,ease);if(t===1)transition=null;}
