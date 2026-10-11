@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#70291f">
+  <title>UBowl · 门店空间档案</title>
+  <meta name="description" content="基于八张实拍照片与四段视频还原的 UBowl 门店 3D 空间，旋转浏览、查看区域细节并对照原始素材。">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%2370291f'/%3E%3Ctext x='32' y='46' text-anchor='middle' fill='%23fff5df' font-family='Arial' font-size='43' font-weight='700'%3EU%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="./style.css">
+  <script type="importmap">{"imports":{"three":"./vendor/three.module.js","three/addons/":"./vendor/addons/"}}</script>
+</head>
+<body>
+<a class="skip" href="#views">跳到视角选择</a>
+<header class="masthead">
+  <a class="brand" href="./" aria-label="UBowl 门店空间首页">UBowl<span>MÁLÀTÀNG</span></a>
+  <div class="masthead-title"><span class="sep"></span><span>门店空间档案<small>STORE STUDY / 001</small></span></div>
+  <div class="header-actions"><span class="version">现状还原 · V1.0</span><button id="gallery-open" class="plain-button">实拍资料 <span>↗</span></button></div>
+</header>
+<main class="workspace">
+  <aside class="sidebar">
+    <div class="intro"><p class="eyebrow">UBOWL / SPATIAL ARCHIVE</p><h1>一间店铺，<br>每一个细节。</h1><p class="intro-copy">从实拍走进三维空间，<br>查看门头、柜台与自选食材区。</p></div>
+    <nav class="views" id="views" aria-label="模型视角">
+      <p class="section-caption">选择视角 <span>EXPLORE</span></p>
+      <button class="view-button active" data-view="overview" aria-pressed="true"><span class="view-num">01</span><span>整体空间<small>空间与材质</small></span><span class="view-arrow">↗</span></button>
+      <button class="view-button" data-view="front" aria-pressed="false"><span class="view-num">02</span><span>门头正面<small>招牌与弧形灯棚</small></span><span class="view-arrow">↗</span></button>
+      <button class="view-button" data-view="counter" aria-pressed="false"><span class="view-num">03</span><span>称重收银<small>柜台与自助设备</small></span><span class="view-arrow">↗</span></button>
+      <button class="view-button" data-view="ingredients" aria-pressed="false"><span class="view-num">04</span><span>自选食材<small>冷柜与取碗区</small></span><span class="view-arrow">↗</span></button>
+      <button class="view-button" data-view="plan" aria-pressed="false"><span class="view-num">05</span><span>俯瞰布局<small>移开顶棚查看</small></span><span class="view-arrow">↗</span></button>
+    </nav>
+    <div class="sidebar-foot"><div class="source-count"><b>08<small>张照片</small></b><b>04<small>段视频</small></b><span>实拍<br>建模依据</span></div><button id="about-open" class="about-button"><span class="status-dot"></span>照片比例还原 · 尺寸为估算 <span>ⓘ</span></button></div>
+  </aside>
+  <section class="stage" aria-label="UBowl 交互式 3D 模型">
+    <div id="viewport" tabindex="0" role="application" aria-label="3D 模型。拖动旋转，滚轮缩放，方向键转动，加减键缩放。"></div>
+    <div class="stage-top"><button class="stage-label" id="stage-about" aria-label="查看还原说明：尺寸为估算"><span class="status-dot"></span>现状还原 · 估算尺寸 ⓘ</button><div class="stage-tools"><button id="roof-toggle" aria-pressed="false" title="隐藏或显示顶棚">隐藏顶棚</button><button id="rotate-toggle" aria-pressed="false">自动旋转</button><button id="fullscreen" title="切换全屏">全屏 ↗</button></div></div>
+    <div class="loader" id="loader" role="status"><div class="loader-brand">UBowl</div><p id="load-label">正在打开店铺空间</p><div class="progress"><span id="load-progress"></span></div><small>载入 3D 模型与材质</small></div>
+    <div class="view-caption"><span id="view-counter">01 / 05</span><h2 id="view-title">整体空间</h2><p id="view-detail">棕红砖面、暖色灯棚与店内陈列。</p></div>
+    <button class="reference-preview" id="reference-open" aria-label="打开当前视角实拍对照"><img id="reference-image" src="./assets/ref-04.jpg" alt="UBowl 门店实拍"><span>查看实拍对照 <b>↗</b></span></button>
+    <div class="stage-bottom"><p class="gesture"><span>拖动旋转</span><i>·</i><span>滚轮缩放</span><i>·</i><span>右键平移</span></p><button id="reset-view">重置视角 ↺</button><span class="model-meta" id="model-meta">参考还原 / 2026.10</span></div>
+    <div class="mobile-views" aria-label="快捷视角"><button data-view="overview" class="active" aria-pressed="true">整体</button><button data-view="front" aria-pressed="false">门头</button><button data-view="counter" aria-pressed="false">收银</button><button data-view="ingredients" aria-pressed="false">食材</button><button data-view="plan" aria-pressed="false">俯瞰</button></div>
+  </section>
+</main>
+<dialog id="reference-dialog" class="reference-dialog">
+  <div class="dialog-head"><div><p class="eyebrow">REFERENCE ARCHIVE</p><h2>实拍资料</h2></div><button class="close-dialog" data-close aria-label="关闭实拍资料">关闭 ×</button></div>
+  <div class="reference-content"><div class="reference-main"><img id="large-reference" src="./assets/ref-04.jpg" alt="门店正面实拍"><div class="reference-caption"><span id="ref-title">04 / 门店正面</span><small id="ref-filename">20261011-161351.jpg</small></div></div><div class="reference-list" id="reference-list"></div></div>
+  <div class="dialog-foot">原始照片用于空间核对。三维模型按可见结构重建，尺寸与未完整展示的纵深为估算。</div>
+</dialog>
+<dialog id="about-dialog" class="about-dialog">
+  <div class="dialog-head"><div><p class="eyebrow">ABOUT THE RECONSTRUCTION</p><h2>还原范围</h2></div><button class="close-dialog" data-close aria-label="关闭还原说明">关闭 ×</button></div>
+  <div class="about-content"><p class="about-lead">把照片里看得见的店铺，<br>变成可以自由查看的空间。</p><dl><dt>已有依据</dt><dd>8 张照片和 4 段视频。还原门头、棕红砖墙、弧形灯棚、菜单与出餐口、双收银设备，以及右侧自选食材区。</dd><dt>估算部分</dt><dd>尚无现场尺寸图。整体宽高、进深、设备间距及不可见连接按照片比例估算，不作为施工或设备定位依据。</dd><dt>模型范围</dt><dd>以顾客可见区域为主。后厨仅保留可见轮廓；临时人流与商场相邻店铺未建入模型。</dd></dl><a class="download-model" href="./assets/UBowl_store.glb" download>下载 3D 模型 <span>GLB ↓</span></a><p class="download-note">GLB 可导入 Blender 等支持 glTF 的三维软件继续编辑。</p></div>
+</dialog>
+<div id="toast" class="toast" role="status"></div>
+<script type="module" src="./app.js"></script>
+</body>
+</html>

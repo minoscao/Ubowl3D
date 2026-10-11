@@ -1,0 +1,287 @@
+{
+  "asset": "AR_UBowl_ObservedStore",
+  "version": "1.1",
+  "units": "meters",
+  "authoringAxes": "Z up, -Y forward",
+  "exportAxes": "Y up, +Z forward",
+  "boundsApprox_m": {
+    "width": 9.3065,
+    "depth": 4.876,
+    "height": 3.655
+  },
+  "shopDimensionsInferred_m": {
+    "width": 9.0,
+    "depth": 3.8,
+    "height": 3.35
+  },
+  "meshTriangles": 107705,
+  "sourceVertices": 74476,
+  "meshObjects": 23,
+  "materials": 44,
+  "glbBytes": 7680792,
+  "files": [
+    "UBowl_store.glb",
+    "UBowl_master.blend"
+  ],
+  "sourcePhotos": [
+    "20261011-161334.jpg",
+    "20261011-161342.jpg",
+    "20261011-161347.jpg",
+    "20261011-161351.jpg",
+    "20261011-161355.jpg",
+    "20261011-161359.jpg",
+    "20261011-161403.jpg",
+    "20261011-161407.jpg"
+  ],
+  "sourceVideos": [
+    "飞书20261011-161415.mp4",
+    "飞书20261011-161419.mp4",
+    "飞书20261011-161423.mp4",
+    "飞书20261011-161426.qt"
+  ],
+  "inferred": [
+    "All absolute dimensions use an unconfirmed 150 mm tile module; no survey dimensions supplied.",
+    "Overall store depth and U-shaped ingredient aisle plan are approximate from moving perspective video.",
+    "Opaque kitchen shell and simplified stainless equipment behind serving hatch are placeholders, not measured fixtures.",
+    "Unseen side and rear enclosure thicknesses are inferred.",
+    "Food contents are representative simplified geometry; exact stock assortment is not asserted.",
+    "Temporary opening bouquets are simplified from supplied photos.",
+    "LED ticker and tiny POS UI lettering are reconstructed from observed wording.",
+    "No customers, staff, seating or unobserved dining areas modelled.",
+    "Luminous canopy upper backing panel is an inferred hidden construction closure; underside shape follows photographed vault."
+  ],
+  "observedFeatures": [
+    "Brown glazed square tile counter, backing wall and left brand pillar",
+    "Raised ivory UBowl and Malatang letterforms",
+    "Cream curved luminous canopy with red ribs and LED header",
+    "Two digital menu/order displays above glazed serving hatch",
+    "Two white tilted self-weigh checkout terminals with black scales and brass bowls",
+    "Amber condiment stone and recessed condiment pots",
+    "Red entrance arch, three-sided refrigerated ingredients display, brass tong and bowl niche"
+  ],
+  "textureContract": {
+    "baseColor": "sRGB",
+    "normal": "OpenGL +Y, Non-Color",
+    "roughness": "scalar",
+    "metallic": "scalar",
+    "screenTextures": "Locally rectified supplied photos; screen glare present in source",
+    "proceduralMaterials": "Original material maps generated locally; glTF compatible image textures",
+    "externalDependencies": []
+  },
+  "hideCanopyPrefix": "canopy_",
+  "cameraGLTF": {
+    "overview": {
+      "position": [
+        7.8,
+        4.8,
+        12
+      ],
+      "target": [
+        0,
+        1.35,
+        -0.7
+      ]
+    },
+    "front": {
+      "position": [
+        0,
+        2.4,
+        14
+      ],
+      "target": [
+        0,
+        1.5,
+        -0.7
+      ]
+    },
+    "ingredients": {
+      "position": [
+        3.6,
+        1.7,
+        0.9
+      ],
+      "target": [
+        3.6,
+        1.25,
+        -2.3
+      ]
+    },
+    "counter": {
+      "position": [
+        4,
+        3.3,
+        7
+      ],
+      "target": [
+        0,
+        1.15,
+        0
+      ]
+    }
+  },
+  "validation": {
+    "roundtrip": {
+      "status": "pass",
+      "importedMeshes": 23,
+      "triangles": 107705,
+      "materials": 41,
+      "embeddedImages": 9,
+      "missingImages": [],
+      "imagePixelValidation": {
+        "amber": {
+          "size": [
+            512,
+            512
+          ],
+          "pixelCount": 1048576,
+          "packed": true,
+          "firstPixel": 0.8235294818878174
+        },
+        "led": {
+          "size": [
+            3072,
+            100
+          ],
+          "pixelCount": 1228800,
+          "packed": true,
+          "firstPixel": 0.7176470756530762
+        },
+        "price": {
+          "size": [
+            512,
+            700
+          ],
+          "pixelCount": 1433600,
+          "packed": true,
+          "firstPixel": 0.8549020290374756
+        },
+        "menu": {
+          "size": [
+            1024,
+            576
+          ],
+          "pixelCount": 2359296,
+          "packed": true,
+          "firstPixel": 0.26274511218070984
+        },
+        "pickup": {
+          "size": [
+            768,
+            432
+          ],
+          "pixelCount": 1327104,
+          "packed": true,
+          "firstPixel": 0.25882354378700256
+        },
+        "terminal-clean": {
+          "size": [
+            320,
+            560
+          ],
+          "pixelCount": 716800,
+          "packed": true,
+          "firstPixel": 0.8823530077934265
+        },
+        "steps": {
+          "size": [
+            512,
+            700
+          ],
+          "pixelCount": 1433600,
+          "packed": true,
+          "firstPixel": 0.9254902601242065
+        },
+        "terrazzo": {
+          "size": [
+            768,
+            768
+          ],
+          "pixelCount": 2359296,
+          "packed": true,
+          "firstPixel": 0.8431373238563538
+        },
+        "ceramic-normal": {
+          "size": [
+            512,
+            512
+          ],
+          "pixelCount": 1048576,
+          "packed": true,
+          "firstPixel": 0.49803924560546875
+        }
+      },
+      "boundsBlender_m": {
+        "min": [
+          -4.656499862670898,
+          -1.5759999752044678,
+          -0.22999998927116394
+        ],
+        "max": [
+          4.650000095367432,
+          3.299999952316284,
+          3.4250001907348633
+        ]
+      },
+      "canopyMeshPresent": true,
+      "screenTexturePresent": true,
+      "review": "roundtrip.png"
+    },
+    "perspectiveReferences": "No calibrated orthographic references supplied; numeric silhouette IoU cannot establish survey accuracy.",
+    "topology": {
+      "status": "pass",
+      "report": "review/topology-validation.json",
+      "failures": [],
+      "warnings": [
+        "brand_Pier: 3 edges shared by more than two faces",
+        "checkout_left_Assembly: 9 edges shared by more than two faces",
+        "checkout_right_Assembly: 9 edges shared by more than two faces",
+        "opening_Flowers: 6 edges shared by more than two faces"
+      ],
+      "warningExplanation": "Remaining shared edges are between touching static subparts/glyph shells in combined display and floral meshes. No deformation, collision or printing claim. GLB primitives are all triangulated; master source parts remain independently editable."
+    },
+    "visualReview": {
+      "views": [
+        "overview.png",
+        "front.png",
+        "cutaway.png",
+        "roundtrip.png"
+      ],
+      "checked": [
+        "All eight photos and 32 video keyframes reviewed",
+        "Counter, canopy, signage, checkout and ingredient fixtures compared to source",
+        "Tile and red-paint values darkened to match photographed brown-red palette",
+        "Amber stone changed to finer cloud/vein texture",
+        "Canopy material is double-sided and includes a documented upper backing closure",
+        "Every embedded image decoded into pixel memory after fresh import"
+      ]
+    }
+  },
+  "exportVerticesBeforeUVSplits": 61631,
+  "drawCallsWithoutShadows": 151,
+  "glbSHA256": "16ebd0bcfd01d7a6b88c35b7d468219e2e3b14552fa2e7681e94dbe0a27f2109",
+  "exportRuntimeVertices": 185180,
+  "boundsNote": "Envelope includes review forecourt, plinth and removable flowers; shop-only dimensions are separate inferred values.",
+  "authoringDependencies": {
+    "Blender": "5.2.1",
+    "texturePreparation": [
+      "Python 3",
+      "Pillow",
+      "NumPy",
+      "OpenCV"
+    ],
+    "font": "Arial Bold from Windows system; not redistributed; GLB signs are geometry"
+  },
+  "buildSteps": [
+    "python build/00_prepare_textures.py",
+    "blender --background --python build/01_build_store.py -- --no-render",
+    "blender --background --python build/02_export_review.py"
+  ],
+  "deliveryNotes": [
+    "Photo-based reconstruction, not a measured as-built survey.",
+    "Only visible public counter and ingredient bay are detailed. Unseen kitchen remains simplified.",
+    "GLB is self-contained; no external texture/network dependencies.",
+    "Master includes hidden EXPORT collection and fully editable LOW source geometry/text.",
+    "Canopy toggle uses canopy_ prefix.",
+    "No rig, animation, physics or collision provided."
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "name": "ubowl-store-viewer",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "UBowl reference-based 3D store reconstruction",
+  "dependencies": {
+    "three": "0.186.1"
+  }
+}
