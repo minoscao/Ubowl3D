@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#171918">
+  <title>PiSell × U Bowl · 3D 拍摄预演</title>
+  <meta name="description" content="根据拍摄脚本 v1 制作的 60 秒三维分镜预演，可播放、逐镜查看与核对台词。">
+  <link rel="icon" href="data:,"><link rel="stylesheet" href="./previs.css">
+  <script type="importmap">{"imports":{"three":"../vendor/three.module.js","three/addons/":"../vendor/addons/"}}</script>
+</head>
+<body>
+<header><a class="wordmark" href="../">UBowl<span>× PiSell</span></a><div class="project-label">拍摄预演<small>SHOOTING STUDY · V1</small></div><a class="back" href="../">返回店铺 ↗</a></header>
+<main>
+  <section class="viewer-column">
+    <div class="section-heading"><h1>先走一遍镜头。</h1><span>8 场 · 27 镜 · 60 秒</span></div>
+    <div id="frame" aria-label="3D 拍摄预演画面">
+      <div id="viewport"></div>
+      <div class="frame-top"><span id="slate">01A / 翻拌钩子</span><span class="demo-badge">3D 预演 · DEMO</span></div>
+      <div id="split-labels" hidden><span id="split-left">顾客端</span><span id="split-right">员工端</span></div>
+      <div id="end-card" hidden><span>PiSell × U Bowl</span><strong>从第一家店，<br>跑顺每一步。</strong><p>POS + Kiosk 双面一体机<br>专为快消餐饮而生</p><small>品牌字样占位 · 正片替换官方 Logo</small></div>
+      <div class="frame-bottom"><span id="cue">45° 俯拍 · 翻拌与蒸汽</span><span id="lens">50 mm</span></div>
+      <div id="loader" role="status"><b>UBowl</b><span id="load-text">载入三维拍摄空间…</span></div>
+    </div>
+    <div class="transport">
+      <button id="prev" aria-label="上一镜" title="上一镜">Ⅰ‹</button>
+      <button id="play" class="primary" disabled aria-label="播放预演">▶ 播放</button>
+      <button id="next" aria-label="下一镜" title="下一镜">›Ⅰ</button>
+      <output id="time">00:00.0 / 01:00</output>
+      <label class="speed">速度 <select id="speed" aria-label="播放速度"><option value=".5">0.5×</option><option value="1" selected>1×</option><option value="1.5">1.5×</option></select></label>
+      <button id="fullscreen" aria-label="画面全屏">全屏 ↗</button>
+    </div>
+    <label class="sr-only" for="timeline">预演时间（秒）</label>
+    <input id="timeline" type="range" min="0" max="60" step=".05" value="0" aria-valuetext="0 秒">
+    <nav id="chapters" aria-label="8 个拍摄场次"></nav>
+    <div class="bottom-note"><span>空格 播放 / 暂停 · ← → 逐镜</span><span>无声预演；原声、旁白在正式拍摄时录制</span></div>
+    <div class="shot-heading"><h2>镜头清单</h2><span>点击跳转机位</span><a href="./shot-list.json" download>下载镜头表 ↓</a></div>
+    <div id="shots" aria-label="镜头清单"></div>
+  </section>
+  <aside>
+    <div class="scene-index" id="scene-number">SCENE 01 / 08</div><h2 id="scene-title">开场钩子</h2>
+    <div class="shot-summary"><span id="shot-code">01A</span><p id="shot-title">大锅翻拌</p><small id="shot-time">00–03 s</small></div>
+    <div class="info-block"><h3>这一镜怎么拍</h3><p id="direction"></p><div class="chips"><span id="camera-info"></span><span>16:9</span></div></div>
+    <div class="info-block"><h3>本场原稿台词 <span id="voice-duration"></span></h3><p id="voice" class="voice"></p><p id="timing" class="timing"></p></div>
+    <details open><summary>现场拍摄提醒</summary><p id="notes"></p></details>
+    <details><summary>预演范围与原稿时长</summary><p>沿用现有店铺模型。人物为通用站位替身；炒锅镜头为独立布景，不代表实测后厨。屏幕、会员和多店后台均为按脚本制作的 DEMO，未连接业务系统。双面设备背屏与扫码窗为拍摄示意，实拍按现场设备核对。</p><p id="timing-overview"></p><p>保留原稿台词及 60 秒时间码；镜头细分和机位是本次预演建议。当前不含真人配音或现场声音。</p></details>
+    <p class="source">依据：PiSell × U Bowl 拍摄分镜脚本 v1<br>场景：UBowl 空间模型 V1.5</p>
+  </aside>
+</main>
+<div id="toast" role="status"></div>
+<script type="module" src="./previs.js"></script>
+</body></html>
