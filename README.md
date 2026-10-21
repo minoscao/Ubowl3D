@@ -1,11 +1,15 @@
 # UBowl 门店空间档案
 
+GitHub：[minoscao/Ubowl3D](https://github.com/minoscao/Ubowl3D)
+
+线上查看：[门店 3D](https://ubowl.mia-dynamic.com/) · [拍摄脚本 3D 预演](https://ubowl.mia-dynamic.com/previs/)
+
 根据用户提供的 8 张照片和 4 段视频还原顾客可见的 UBowl 门店。
 
 ## 查看与维护
 
 - 静态页面在 `dist/`，运行 `python -m http.server 4173 --bind 127.0.0.1 --directory dist`。
-- 模型源文件与可复现 Blender 脚本保存在相邻的 `store-model/`。
+- 可编辑 Blender 模型、建模脚本、贴图和参考照片保存在仓库内的 `store-model/`；模型维护说明见 `store-model/README.md`。
 - 部署身份以 `.openai/hosting.json` 为准，复用该 Site，勿重新创建。
 - 用户指定公开地址：`https://ubowl.mia-dynamic.com`。
 - 模型通过 GLB 加载，支持旋转、缩放、平移、五个固定视角、隐藏顶棚、自动旋转和模型下载。

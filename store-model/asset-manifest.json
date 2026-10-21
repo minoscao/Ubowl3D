@@ -1,0 +1,640 @@
+{
+  "asset": "AR_UBowl_ObservedStore",
+  "version": "1.5",
+  "units": "meters",
+  "authoringAxes": "Z up, -Y forward",
+  "exportAxes": "Y up, +Z forward",
+  "boundsApprox_m": {
+    "width": 10.0065,
+    "depth": 4.876,
+    "height": 3.655
+  },
+  "shopDimensionsInferred_m": {
+    "width": 9.7,
+    "depth": 3.8,
+    "height": 3.35
+  },
+  "meshTriangles": 116460,
+  "sourceVertices": 77848,
+  "meshObjects": 23,
+  "materials": 44,
+  "glbBytes": 8446028,
+  "files": [
+    "UBowl_store.glb",
+    "UBowl_master.blend"
+  ],
+  "sourcePhotos": [
+    "20261011-161334.jpg",
+    "20261011-161342.jpg",
+    "20261011-161347.jpg",
+    "20261011-161351.jpg",
+    "20261011-161355.jpg",
+    "20261011-161359.jpg",
+    "20261011-161403.jpg",
+    "20261011-161407.jpg"
+  ],
+  "sourceVideos": [
+    "飞书20261011-161415.mp4",
+    "飞书20261011-161419.mp4",
+    "飞书20261011-161423.mp4",
+    "飞书20261011-161426.qt"
+  ],
+  "inferred": [
+    "All absolute dimensions use an unconfirmed 150 mm tile module; no survey dimensions supplied.",
+    "Overall store depth and U-shaped ingredient aisle plan are approximate from moving perspective video.",
+    "Opaque kitchen shell and simplified stainless equipment behind serving hatch are placeholders, not measured fixtures.",
+    "Unseen side and rear enclosure thicknesses are inferred.",
+    "Food contents are representative simplified geometry; exact stock assortment is not asserted.",
+    "Temporary opening bouquets are simplified from supplied photos.",
+    "LED ticker and tiny POS UI lettering are reconstructed from observed wording.",
+    "No customers, staff, seating or unobserved dining areas modelled.",
+    "Luminous canopy upper backing panel is an inferred hidden construction closure; underside shape follows photographed vault.",
+    "Current user target is approximately 1.0 m clear passage, explicitly an estimate. Actual geometry clearance is recorded from evaluated world-space mesh bounds, including protruding shelf lips and glass.",
+    "Current red mass front end spans x=2.05..3.35 m, y=1.20..1.44 m; 1.30 m width and 0.24 m end depth remain inferred. Its full face covers the left refrigerator end, following explicit user correction."
+  ],
+  "observedFeatures": [
+    "Brown glazed square tile counter, backing wall and left brand pillar",
+    "Raised ivory UBowl and Malatang letterforms",
+    "Cream curved luminous canopy with red ribs and LED header",
+    "Two digital menu/order displays above glazed serving hatch",
+    "Two white tilted self-weigh checkout terminals with black scales and brass bowls",
+    "Amber condiment stone and recessed condiment pots",
+    "Red entrance arch, three-sided refrigerated ingredients display, brass tong and bowl niche"
+  ],
+  "textureContract": {
+    "baseColor": "sRGB",
+    "normal": "OpenGL +Y, Non-Color",
+    "roughness": "scalar",
+    "metallic": "scalar",
+    "screenTextures": "Locally rectified supplied photos; screen glare present in source",
+    "proceduralMaterials": "Original material maps generated locally; glTF compatible image textures",
+    "externalDependencies": []
+  },
+  "hideCanopyPrefix": "canopy_",
+  "cameraGLTF": {
+    "overview": {
+      "position": [
+        7.8,
+        4.8,
+        12
+      ],
+      "target": [
+        0,
+        1.35,
+        -0.7
+      ]
+    },
+    "front": {
+      "position": [
+        0,
+        2.4,
+        14
+      ],
+      "target": [
+        0,
+        1.5,
+        -0.7
+      ]
+    },
+    "ingredients": {
+      "position": [
+        3.85,
+        1.65,
+        0.6
+      ],
+      "target": [
+        3.85,
+        1.4,
+        -2.95
+      ]
+    },
+    "counter": {
+      "position": [
+        4,
+        3.3,
+        7
+      ],
+      "target": [
+        0,
+        1.15,
+        0
+      ]
+    },
+    "entrance": {
+      "position": [
+        3.88,
+        2.2,
+        3.6
+      ],
+      "target": [
+        3.7,
+        1.55,
+        -1.3
+      ]
+    }
+  },
+  "validation": {
+    "roundtrip": {
+      "status": "pass",
+      "importedMeshes": 23,
+      "triangles": 116460,
+      "materials": 41,
+      "embeddedImages": 9,
+      "missingImages": [],
+      "imagePixelValidation": {
+        "amber": {
+          "size": [
+            512,
+            512
+          ],
+          "pixelCount": 1048576,
+          "packed": true,
+          "firstPixel": 0.8235294818878174
+        },
+        "led": {
+          "size": [
+            3072,
+            100
+          ],
+          "pixelCount": 1228800,
+          "packed": true,
+          "firstPixel": 0.7176470756530762
+        },
+        "price": {
+          "size": [
+            512,
+            700
+          ],
+          "pixelCount": 1433600,
+          "packed": true,
+          "firstPixel": 0.8549020290374756
+        },
+        "menu": {
+          "size": [
+            1024,
+            576
+          ],
+          "pixelCount": 2359296,
+          "packed": true,
+          "firstPixel": 0.26274511218070984
+        },
+        "pickup": {
+          "size": [
+            768,
+            432
+          ],
+          "pixelCount": 1327104,
+          "packed": true,
+          "firstPixel": 0.25882354378700256
+        },
+        "terminal-clean": {
+          "size": [
+            320,
+            560
+          ],
+          "pixelCount": 716800,
+          "packed": true,
+          "firstPixel": 0.8823530077934265
+        },
+        "steps": {
+          "size": [
+            512,
+            700
+          ],
+          "pixelCount": 1433600,
+          "packed": true,
+          "firstPixel": 0.9254902601242065
+        },
+        "terrazzo": {
+          "size": [
+            768,
+            768
+          ],
+          "pixelCount": 2359296,
+          "packed": true,
+          "firstPixel": 0.8431373238563538
+        },
+        "ceramic-normal": {
+          "size": [
+            512,
+            512
+          ],
+          "pixelCount": 1048576,
+          "packed": true,
+          "firstPixel": 0.49803924560546875
+        }
+      },
+      "boundsBlender_m": {
+        "min": [
+          -4.656499862670898,
+          -1.5759999752044678,
+          -0.22999998927116394
+        ],
+        "max": [
+          5.349999904632568,
+          3.299999952316284,
+          3.4250001907348633
+        ]
+      },
+      "canopyMeshPresent": true,
+      "screenTexturePresent": true,
+      "review": "roundtrip.png"
+    },
+    "perspectiveReferences": "No calibrated orthographic references supplied; numeric silhouette IoU cannot establish survey accuracy.",
+    "topology": {
+      "status": "pass",
+      "report": "review/topology-validation.json",
+      "failures": [],
+      "warnings": [
+        "floor_Assembly: numeric suffix in object or mesh name",
+        "inferred_Shell: numeric suffix in object or mesh name",
+        "entry_Assembly: numeric suffix in object or mesh name",
+        "entry_Assembly: 2 edges shared by more than two faces",
+        "counter_Assembly: numeric suffix in object or mesh name",
+        "brand_Pier: numeric suffix in object or mesh name",
+        "brand_Pier: 3 edges shared by more than two faces",
+        "service_Backwall: numeric suffix in object or mesh name",
+        "service_Backwall: 1 edges shared by more than two faces",
+        "service_Door: numeric suffix in object or mesh name",
+        "service_Window: numeric suffix in object or mesh name",
+        "service_Displays: numeric suffix in object or mesh name",
+        "canopy_Assembly: numeric suffix in object or mesh name",
+        "bowl_Station: numeric suffix in object or mesh name",
+        "ingredient_back_Assembly: numeric suffix in object or mesh name",
+        "ingredient_left_Assembly: numeric suffix in object or mesh name",
+        "ingredient_right_Assembly: numeric suffix in object or mesh name",
+        "condiment_Station: numeric suffix in object or mesh name",
+        "checkout_left_Assembly: numeric suffix in object or mesh name",
+        "checkout_left_Assembly: 9 edges shared by more than two faces",
+        "checkout_right_Assembly: numeric suffix in object or mesh name",
+        "checkout_right_Assembly: 9 edges shared by more than two faces",
+        "staff_POS: numeric suffix in object or mesh name",
+        "service_Props: numeric suffix in object or mesh name",
+        "drinks_Station: numeric suffix in object or mesh name",
+        "counter_Signs: numeric suffix in object or mesh name",
+        "service_Notices: numeric suffix in object or mesh name",
+        "opening_Flowers: numeric suffix in object or mesh name",
+        "opening_Flowers: 15 edges shared by more than two faces"
+      ],
+      "warningExplanation": "Shared edges occur between touching static subparts/glyph shells in combined meshes. No deformation, collision or printing claim. GLB primitives are triangulated; master source parts remain independently editable."
+    },
+    "visualReview": {
+      "views": [
+        "overview.png",
+        "front.png",
+        "cutaway.png",
+        "roundtrip.png",
+        "partition-corrected.png",
+        "partition-comparison.jpg",
+        "entry-matched.png",
+        "entry-entrance.png",
+        "entry-top-annotated.png",
+        "entry-comparison.jpg",
+        "end-return-entrance.png",
+        "end-return-front.png",
+        "canopy-v1.5-detail.png",
+        "canopy-v1.5-front.png",
+        "canopy-v1.5-entrance.png"
+      ],
+      "checked": [
+        "All eight photos and 32 original video keyframes reviewed",
+        "Counter, canopy, signage, checkout and ingredient fixtures compared to source",
+        "Every embedded image decoded into pixel memory after fresh import",
+        "Additional QT frames at 2.3, 2.8 and 3.3 seconds reviewed for red partition mass and setback",
+        "Wide red partition face, 2x3 notice layout, backwall tile termination and fridge junction inspected in close render",
+        "Same original-photo crop used to inspect the canopy junction",
+        "Right wall front width and full warmer-side coverage verified from evaluated mesh bounds",
+        "Right wall checked in front elevation and oblique entry views; clear aisle remains at least 1 m"
+      ],
+      "qualification": "Camera matching is approximate. File import and mesh checks do not establish photographic or survey accuracy. Entry relationships and inward display orientation reviewed separately from technical export checks."
+    },
+    "clearance": {
+      "unit": "metres",
+      "basis": "evaluated world-space mesh bounding boxes including trim and shelf lips",
+      "userTarget_m": 1.0,
+      "userTargetStatus": "user estimate, not surveyed",
+      "leftCase": {
+        "min": [
+          2.7699999809265137,
+          1.4600000381469727,
+          0.007500000298023224
+        ],
+        "max": [
+          3.3429999351501465,
+          2.4600000381469727,
+          2.1550002098083496
+        ]
+      },
+      "rightCase": {
+        "min": [
+          4.35699987411499,
+          1.2400000095367432,
+          0.007500000298023224
+        ],
+        "max": [
+          4.930000305175781,
+          2.4600000381469727,
+          2.1550002098083496
+        ]
+      },
+      "rightNiche": {
+        "min": [
+          4.354999542236328,
+          -0.4350000023841858,
+          0.0
+        ],
+        "max": [
+          5.130000114440918,
+          1.1800000667572021,
+          2.700000047683716
+        ]
+      },
+      "redMass": {
+        "min": [
+          2.049999952316284,
+          1.2000000476837158,
+          0.0
+        ],
+        "max": [
+          3.3499999046325684,
+          2.990000009536743,
+          3.3600001335144043
+        ]
+      },
+      "ingredientClearWidth_m": 1.0139999389648438,
+      "entranceClearWidth_m": 1.0049996376037598,
+      "leftCaseFrontDirection": "+X into aisle",
+      "rightCaseFrontDirection": "-X into aisle",
+      "nicheFrontDirection": "-X into aisle",
+      "continuousStraightCorridor_m": 1.0049996376037598,
+      "entranceMeasurementNote": "Conservative X projection between red mass and niche; these masses do not fully overlap in Y. The continuous straight corridor is the stricter projection intersection over both entrance and ingredient segments.",
+      "leftCaseEndReturn": {
+        "wallBounds": {
+          "min": [
+            2.0500001907348633,
+            1.2000000476837158,
+            0.0
+          ],
+          "max": [
+            3.3499999046325684,
+            1.440000057220459,
+            3.359999895095825
+          ]
+        },
+        "shelfToWallOuterEdgeMargin_m": 0.006999969482421875,
+        "wallToCaseLongitudinalGap_m": 0.019999980926513672,
+        "frontElevationCoversCaseEnd": true,
+        "wallDepth_m": 0.24000000953674316
+      },
+      "rightCaseEndReturn": {
+        "wallBounds": {
+          "min": [
+            4.355000019073486,
+            -0.44999998807907104,
+            0.0
+          ],
+          "max": [
+            5.200000286102295,
+            -0.23000000417232513,
+            2.700000047683716
+          ]
+        },
+        "userMinimumWidth_m": 0.6,
+        "actualWidth_m": 0.8450002670288086,
+        "wallDepth_m": 0.2199999839067459,
+        "frontElevationCoversWarmerSide": true,
+        "inFrontOfWarmer": true
+      },
+      "annotationPixelLines": [
+        {
+          "points": [
+            [
+              412.2856557369232,
+              399.9999761581421
+            ],
+            [
+              701.9999623298645,
+              399.9999761581421
+            ]
+          ],
+          "text": "1.014 m"
+        },
+        {
+          "points": [
+            [
+              414.28565979003906,
+              728.5714387893677
+            ],
+            [
+              701.4284133911133,
+              728.5714387893677
+            ]
+          ],
+          "text": "1.005 m"
+        }
+      ]
+    }
+  },
+  "exportVerticesBeforeUVSplits": 66164,
+  "drawCallsWithoutShadows": 152,
+  "glbSHA256": "64b6f91245e1d210d8a69912d6ccd97c38f2ffc1afcdc7b57f96cc88abc24f43",
+  "exportRuntimeVertices": 207666,
+  "boundsNote": "Envelope includes review forecourt, plinth and removable flowers; shop-only dimensions are separate inferred values.",
+  "authoringDependencies": {
+    "Blender": "5.2.1",
+    "texturePreparation": [
+      "Python 3",
+      "Pillow",
+      "NumPy",
+      "OpenCV"
+    ],
+    "font": "Arial Bold from Windows system; not redistributed; GLB signs are geometry"
+  },
+  "buildSteps": [
+    "python build/00_prepare_textures.py",
+    "blender --background --python build/01_build_store.py -- --no-render",
+    "blender --background --python build/02_export_review.py",
+    "Run skill validate.py on EXPORT collection with --budget-tris 150000 --require-uv",
+    "python build/03_finalize_manifest.py",
+    "blender --background --python build/04_entry_review.py",
+    "python build/05_review_annotation.py",
+    "python build/03_finalize_manifest.py",
+    "For v1.5 revision: apply build/canopy_detail_geometry.py to preserved review/UBowl_v1.4_before_canopy.blend, save master, then run 02_export_review.py, validate.py, and 03_finalize_manifest.py."
+  ],
+  "deliveryNotes": [
+    "Photo-based reconstruction, not a measured as-built survey.",
+    "Only visible public counter and ingredient bay are detailed. Unseen kitchen remains simplified.",
+    "GLB is self-contained; no external texture/network dependencies.",
+    "Master includes hidden EXPORT collection and fully editable LOW source geometry/text.",
+    "Canopy toggle uses canopy_ prefix.",
+    "No rig, animation, physics or collision provided."
+  ],
+  "revisionHistory": [
+    {
+      "version": "1.2",
+      "reason": "User identified incorrect thin, forward-projecting red partition beside the counter.",
+      "evidence": [
+        "review/partition-2.3.jpg",
+        "review/partition-2.8.jpg",
+        "review/partition-3.3.jpg",
+        "review/partition-evidence.jpg"
+      ],
+      "observed": "Broad red front face meets the tiled service backwall; entrance turns to the right of this mass. Six notices occupy two rows of three on the red face.",
+      "previous_m": {
+        "x": [
+          2.77,
+          3.05
+        ],
+        "y": [
+          0.065,
+          2.975
+        ],
+        "width": 0.28
+      },
+      "correctedInferred_m": {
+        "x": [
+          2.05,
+          3.05
+        ],
+        "frontY": 1.2,
+        "rearY": 2.99,
+        "width": 1.0
+      },
+      "changes": [
+        "Red mass moved back to approximately the service wall plane, widened toward the left, and given a recess for the existing left ingredient case.",
+        "Tiled service wall now ends at x=2.05 without overlapping the red face.",
+        "Six notice panels enlarged and positioned on the corrected front face."
+      ],
+      "preserved": [
+        "Counter position and dimensions",
+        "All three ingredient refrigerator placements",
+        "Right edge of the entrance-left red mass at x=3.05",
+        "Other fixture, food and flower placement choices"
+      ],
+      "uncertainty": "1.0 m width and 1.20 m setback are perspective-based estimates, not surveyed measurements. Close comparison is from a similar but uncalibrated camera."
+    },
+    {
+      "version": "1.3",
+      "reason": "User rejected the narrow entrance bay and estimated about 1 m clear passage. Re-review found reversed side-fridge orientation and a front-facing bowl niche that should face inward from the right wall.",
+      "evidence": [
+        "ref/20261011-161407.jpg",
+        "review/partition-2.8.jpg",
+        "review/partition-3.8.jpg"
+      ],
+      "changes": [
+        "Right facade boundary moved from x=4.50 to x=5.20; inferred whole storefront width is now 9.70 m.",
+        "Right case centre moved to x=4.65; back case widened to 2.10 m.",
+        "Left case faces +X and right case faces -X, both into the aisle.",
+        "Bowl/tong niche rotated onto the right side wall, facing -X, with its placement checked against a continuous straight passage.",
+        "Entrance arch widened with matching cream inner soffit.",
+        "Service counter and broad red face position retained."
+      ],
+      "clearance_m": {
+        "ingredient": 1.014,
+        "entryProjectedConservative": 1.305,
+        "continuousStraightCorridor": 1.012
+      },
+      "status": "Geometry and mesh clearances reviewed; absolute dimensions and cameras remain estimates."
+    },
+    {
+      "version": "1.4",
+      "reason": "User clarified that the red wall completely conceals the left refrigerator end from the storefront. Previous red face stopped at x=3.05 while shelf lips reached x=3.343.",
+      "changes": [
+        "Solid full-height wall end now spans x=2.05..3.35 and y=1.20..1.44, joining the existing deep red mass.",
+        "Left refrigerator shortened from 1.22 m to 1.00 m; front end moved to y=1.46 while its rear end remains y=2.46.",
+        "Right refrigerator and bowl/tong niche have not moved."
+      ],
+      "clearance_m": {
+        "ingredient": 1.0139999389648438,
+        "entryProjectedConservative": 1.0049996376037598,
+        "continuousStraightCorridor": 1.0049996376037598
+      },
+      "endReturnValidation": {
+        "wallBounds": {
+          "min": [
+            2.0500001907348633,
+            1.2000000476837158,
+            0.0
+          ],
+          "max": [
+            3.3499999046325684,
+            1.440000057220459,
+            3.359999895095825
+          ]
+        },
+        "shelfToWallOuterEdgeMargin_m": 0.006999969482421875,
+        "wallToCaseLongitudinalGap_m": 0.019999980926513672,
+        "frontElevationCoversCaseEnd": true,
+        "wallDepth_m": 0.24000000953674316
+      },
+      "review": [
+        "review/end-return-entrance.png",
+        "review/end-return-front.png"
+      ],
+      "qualification": "Front-view geometry coverage and mesh bounds verified; this remains a photo-based reconstruction with inferred dimensions."
+    },
+    {
+      "version": "1.5",
+      "reason": "User corrected the canopy junction and requested the right end wall be at least 0.60 m wide and fully conceal the bowl station side.",
+      "changes": [
+        "Shortened the existing entry arch depth to 0.68 m and gave the hanging end an ivory underside.",
+        "Extended the main luminous canopy rear end by 0.40 m.",
+        "Rebuilt the entry soffit to rise into the rear flat ceiling; the right curve meets the widened wall end.",
+        "Replaced the isolated niche header with a continuous red side wall and brown side-wall tile reveal above.",
+        "Replaced the thin 0.26 m outer pier with a 0.845 m tiled full end return, covering the entire bowl-warmer side from the front."
+      ],
+      "rightEndReturn": {
+        "wallBounds": {
+          "min": [
+            4.355000019073486,
+            -0.44999998807907104,
+            0.0
+          ],
+          "max": [
+            5.200000286102295,
+            -0.23000000417232513,
+            2.700000047683716
+          ]
+        },
+        "userMinimumWidth_m": 0.6,
+        "actualWidth_m": 0.8450002670288086,
+        "wallDepth_m": 0.2199999839067459,
+        "frontElevationCoversWarmerSide": true,
+        "inFrontOfWarmer": true
+      },
+      "clearance_m": 1.0049996376037598,
+      "qualification": "The 0.60 m minimum and approximately 1 m aisle are user estimates; other geometry remains inferred from uncalibrated images. Counter and terminal projection differences remain outside this localized revision."
+    }
+  ],
+  "cameraMatch": {
+    "source": "QT frames near 2.8 and 3.8 seconds",
+    "lens_mm": 24,
+    "sensorFit": "VERTICAL",
+    "sensorHeight_mm": 36,
+    "qualification": "Approximate phone field of view and eye-level camera; no measured camera calibration.",
+    "partitionCameraBlender": {
+      "position": [
+        3.4,
+        -0.7,
+        1.65
+      ],
+      "target": [
+        2.85,
+        1.45,
+        1.4
+      ]
+    },
+    "aisleCameraBlender": {
+      "position": [
+        3.85,
+        -0.6,
+        1.65
+      ],
+      "target": [
+        3.85,
+        2.95,
+        1.4
+      ]
+    }
+  }
+}
